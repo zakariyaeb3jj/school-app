@@ -1,4 +1,4 @@
-# professor-service-deployment.yaml
+# professor-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: professor
-        image: peripapapy/school-app-professor:latest
+        image: peripapapy/school-app-professor
         ports:
-        - containerPort: 5000
+        - containerPort: 5003
 ---
 apiVersion: v1
 kind: Service
@@ -28,5 +28,6 @@ spec:
     app: professor
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 5000
+      port: 5003
+      targetPort: 5003
+  type: ClusterIP
