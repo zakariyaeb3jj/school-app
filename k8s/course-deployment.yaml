@@ -1,0 +1,32 @@
+# course-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course
+  template:
+    metadata:
+      labels:
+        app: course
+    spec:
+      containers:
+      - name: course
+        image: peripapapy/school-app-course:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: course
+spec:
+  selector:
+    app: course
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

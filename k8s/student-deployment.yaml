@@ -1,0 +1,32 @@
+# student-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student
+  template:
+    metadata:
+      labels:
+        app: student
+    spec:
+      containers:
+      - name: student
+        image: peripapapy/school-app-student:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: student
+spec:
+  selector:
+    app: student
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

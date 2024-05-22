@@ -1,0 +1,32 @@
+# professor-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: professor-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: professor
+  template:
+    metadata:
+      labels:
+        app: professor
+    spec:
+      containers:
+      - name: professor
+        image: peripapapy/school-app-professor:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: professor
+spec:
+  selector:
+    app: professor
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
