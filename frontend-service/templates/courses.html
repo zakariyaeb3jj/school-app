@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="text-center">Available Courses</h1>
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <div class="list-group mt-4">
+            {% for course in courses %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ course.title }}</h5>
+                    <p class="mb-1">{{ course.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to School App</h1>
+    <p class="lead">This is a simple app for managing courses, students, and professors.</p>
+    <hr class="my-4">
+    <p>Please log in or sign up to continue.</p>
+    <a class="btn btn-primary btn-lg" href="/student/login" role="button">Student Login</a>
+    <a class="btn btn-secondary btn-lg" href="/professor/login" role="button">Professor Login</a>
+    <div class="mt-3">
+        <a class="btn btn-outline-primary" href="/student/signup" role="button">Student Sign Up</a>
+        <a class="btn btn-outline-secondary" href="/professor/signup" role="button">Professor Sign Up</a>
+    </div>
+</div>
+{% endblock %}

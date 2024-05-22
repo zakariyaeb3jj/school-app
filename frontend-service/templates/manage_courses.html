@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Courses{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h1 class="text-center">Manage Courses</h1>
+        <form action="/manage_courses" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Course</button>
+        </form>
+        {% if error %}
+            <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+        <div class="list-group mt-4">
+            {% for course in courses %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ course.title }}</h5>
+                    <p class="mb-1">{{ course.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
